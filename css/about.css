@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@200;300;400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+/* ==================================== NAVIGATION BAR =================================== */
+header {
+    height: 60px;
+    width: 100%;
+    background-image: linear-gradient(90deg,#8d1a17,#181733);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+li {
+    list-style-type: none;
+}
+.nav__titleLogo {
+    color: #fdc52c;
+    padding-left: 40px;
+    display: block;
+    height: 30px;
+    width: 30px;
+    flex: 0.2;
+}
+
+.nav__titleImg {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    background-color: #8d1a17;
+}
+
+.nav__menu {
+    display: flex;
+    flex: 0.6;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* ========================================= BURGER MENU =========================== */
+
+.hamburger__menu {
+    display: none;
+}
+#menu__toggle {
+    opacity: 0;
+}
+/* sve ih rotiram za 45 */
+#menu__toggle:checked ~ .menu__btn > span {
+    transform: rotate(45deg);
+}
+/* vracam ga iza spana */
+#menu__toggle:checked ~ .menu__btn > span::before {
+    top: 0px;
+    transform: rotate(0);
+}
+/* rotiram ga za 90 stepeni u odnosu na span */
+#menu__toggle:checked ~ .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+#menu__toggle:checked ~ .menu__box {
+    visibility: visible;
+    left: 0;
+}
+
+.menu__btn {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fdc52c;
+    transition-duration: .25s;
+}
+
+.menu__btn > span::before {
+    content: '';
+    top: -8px;
+}
+
+.menu__btn > span::after {
+    content: '';
+    top: 8px;
+}
+
+.menu__box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background: linear-gradient(180deg,#cd122d 0,#154284);    
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+    transition-duration: .4s;
+}
+
+.menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: 0.25s;
+}
+
+  .menu__item:hover {
+    background: linear-gradient(90deg,#cd122d,#181733);
+}
+
+/* =========================== MAIN PART ============================ */
+
+.main__background {
+    height: 100%;
+    width: 100%;
+    background-color: #181733;
+}
+
+.container__text {
+    width: 80%;
+    margin: 0px auto 0px auto;
+}
+
+.container__textImg {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px auto;
+}
+
+.container__text h2 {
+    color: #fdc52c;
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.container__text h4 {
+    color: #fdc52c;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.container__text p {
+    color: #cd122d;
+    margin-bottom: 40px;
+}
+
+.container__text p:last-child {
+    margin-bottom: 0px;
+    padding-bottom: 40px;
+}
+
+.table__games,.table__season {
+    color: white;
+    width: 500px;
+    font-size: 20px;
+    border: 1px solid white;
+    outline: 1px solid white;
+    margin: 0 auto;
+}
+
+.container__tables {
+    margin-bottom: 80px;
+}
+
+.table__games tr {
+    background-color: #8d1a17;
+    /* outline: 1px solid #8d1a17; */
+}
+
+.table__games td {
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    border:  1px solid #8d1a17;
+    outline:  1px solid #8d1a17;
+}
+.table__season {
+    margin-bottom: 40px;
+}
+
+.table__season td {
+    background-color: #8d1a17;
+    border: 1px solid #8d1a17;
+    outline: 1px solid #8d1a17;
+}
+
+.table__seasonHeader {
+    background-color: #154284;
+    outline: 1px solid #154284;
+    border: 1px solid #154284;
+}
+
+.table__gamesHeader {
+    background-color: #154284;
+    outline: 1px solid #154284;
+    border: 1px solid #154284;
+}
+
+
+/* =================== FOOTER ========================== */
+footer {
+    height: 100px;
+    background-color: #181733;
+    padding: 40px 0px 10px;
+    text-align: center;
+    color: #fff;
+    border-top: 1px solid #fff;
+}
+
+@media (max-width: 678px) {
+
+    p {
+        font-size: 14px;
+    }
+    
+    .hamburger__menu {
+        display: block;
+    }
+
+    .nav__menu {
+        display: none;
+    }
+
+    .container__tables {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .table__season,
+    .table__games {
+        width: 299px;
+        font-size: 14px;
+    }
+
+    .table__games {
+        margin-bottom: 40px;
+    }
+}

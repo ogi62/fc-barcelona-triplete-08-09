@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@200;300;400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+/* ==================================== NAVIGATION BAR =================================== */
+header {
+    height: 60px;
+    width: 100%;
+    background-image: linear-gradient(90deg,#8d1a17,#181733);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+li {
+    list-style-type: none;
+}
+.nav__titleLogo {
+    color: #fdc52c;
+    padding-left: 40px;
+    display: block;
+    height: 30px;
+    width: 30px;
+    flex: 0.2;
+}
+
+.nav__titleImg {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    background-color: #8d1a17;
+}
+
+
+.nav__menu {
+    display: flex;
+    flex: 0.6;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* ========================================= BURGER MENU =========================== */
+
+.hamburger__menu {
+    display: none;
+}
+#menu__toggle {
+    opacity: 0;
+}
+/* sve ih rotiram za 45 */
+#menu__toggle:checked ~ .menu__btn > span {
+    transform: rotate(45deg);
+}
+/* vracam ga iza spana */
+#menu__toggle:checked ~ .menu__btn > span::before {
+    top: 0px;
+    transform: rotate(0);
+}
+/* rotiram ga za 90 stepeni u odnosu na span */
+#menu__toggle:checked ~ .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+#menu__toggle:checked ~ .menu__box {
+    visibility: visible;
+    left: 0;
+}
+
+.menu__btn {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fdc52c;
+    transition-duration: .25s;
+}
+
+.menu__btn > span::before {
+    content: '';
+    top: -8px;
+}
+
+.menu__btn > span::after {
+    content: '';
+    top: 8px;
+}
+
+.menu__box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    z-index: 100;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background: linear-gradient(180deg,#cd122d 0,#154284);    
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+    transition-duration: .4s;
+}
+
+.menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: 0.25s;
+}
+
+  .menu__item:hover {
+    background: linear-gradient(90deg,#cd122d,#181733);
+}
+
+/* =========================== MAIN PART ============================ */
+/* ======== flex ====== */
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexColumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* ================ flex ============== */
+.main__background {
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    background-color: #181733;
+    position: relative;
+}
+
+.container__flex {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container__player {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    margin: 40px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container__player img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.container__playerBio {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fdc52c;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px 10px 15px 10px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.4s ease-out;
+    transform: translateY(-100px);
+}
+
+.container__player:hover .container__playerBio {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.playerBio__name {
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.playerBio__number {
+    margin-right: 5px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.playerBio__position {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+}
+
+.playerBio__stats {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#back {
+    background: linear-gradient(90deg,#cd122d,#181733);
+    color: #fdc52c;
+    border: 1px solid #fdc52c;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 7px 12px;
+    outline: none;
+    display: none;
+    position: relative;
+    top: 60px;
+    left: 0px
+}
+
+#back.show {
+    display: block;
+}
+
+.footballPlayer {
+    width: 80%;
+    height: 400px;
+    margin: 40px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg,#181733,#cd122d);
+    border-radius: 10px;
+}
+
+.footballPlayer img {
+    width: 300px;
+    height: 400px;
+    flex: 0.2;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.player__container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    /* background-color: pink; */
+}
+
+.player__containerBio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex: 0.2;
+    /* background-color: red; */
+    padding: 10px 15px;
+}
+
+.player__containerBio h2 {
+    font-size: 25px;
+    letter-spacing: 1.2px;
+    margin-bottom: 2px;
+}
+
+.player__containerBio h3 {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1.6px;
+    color: #fdc52c;
+}
+
+.player__containerBio h5 {
+    font-size: 19px;
+    margin-bottom: 5px;
+}
+
+
+.player__containerStatistic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex: 0.7;
+    /* background-color: orange; */
+    letter-spacing: 1.2px;
+}
+
+.statistic__season{
+    flex: 0.5;
+    padding: 5px 10px;
+}
+
+.statistic__total {
+    flex: 0.5;
+    padding: 5px 10px;
+}
+
+.flexColumn {
+    color: #fdc52c;
+    padding: 5px 10px;
+}
+
+.flexColumn h2 {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.flexColumn h4 {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+
+/* =================== FOOTER ========================== */
+footer {
+    height: 100px;
+    background-color: #181733;
+    padding: 40px 0px 10px;
+    text-align: center;
+    color: #fff;
+    border-top: 1px solid #fff;
+}
+
+@media (max-width: 900px) {
+    .footballPlayer {
+        height: 300px;
+        width: 90%;
+    }
+
+    .footballPlayer img {
+        width: 200px;
+        height: 300px;
+    }
+
+    .player__container {
+        flex: 1;
+    }
+    .player__containerBio h2 {
+        font-size: 24px;
+    }
+
+    .player__containerBio h3 {
+        font-size: 15px;
+    }
+
+    .player__containerBio h5 {
+        font-size: 12px;
+    }
+
+    .player__containerStatistic {
+        padding: 0px;
+    }
+
+    .flexColumn {
+        padding: 0px;
+    }
+    .flexColumn h2 {
+        font-size: 16px;
+    }
+    .flexColumn h4 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 678px) {
+
+    #back {
+        font-size: 14px;
+    }
+
+    .hamburger__menu {
+        display: block;
+    }
+
+    .nav__menu {
+        display: none;
+    }
+
+    .footballPlayer {
+        width: 90%;
+        height: 250px;
+        margin: 40px auto 20px auto;
+    }
+
+    .footballPlayer img {
+        flex: 0.2;
+        object-fit: contain;
+        width: 200px;
+        height: 250px;
+    }
+
+    .player__container {
+        flex: 0.7;
+        justify-content: center;
+    }
+
+    .player__containerBio h2 {
+        font-size: 20px;
+    }
+
+    .player__containerBio h3 {
+        font-size: 12px;
+    }
+
+    .player__containerBio h5 {
+        font-size: 10px;
+    }
+
+    .player__containerStatistic {
+        padding: 0px;
+    }
+
+    .flexColumn {
+        padding: 0px;
+        align-items: flex-start;
+    }
+    .flexColumn h2 {
+        font-size: 10px;
+    }
+    .flexColumn h4 {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 469px) {
+    .footballPlayer {
+        flex-direction: column;
+        height: 400px;
+        width: 90%;
+    }
+
+    .footballPlayer img {
+        object-fit: contain;
+        width: 100%;
+    }
+
+    .player__containerBio h2 {
+        font-size: 24px;
+    }
+
+    .player__containerBio h3 {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+
+    .player__containerBio h5 {
+        font-size: 14px;
+    }
+
+    .player__containerStatistic {
+        display: none;
+    }
+    
+    
+}
